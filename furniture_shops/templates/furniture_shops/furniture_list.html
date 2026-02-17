@@ -35,7 +35,11 @@
                 </div>
             </div>
             {% empty %}
-            <p class="no-products" data-en="No products available" data-az="Məhsul mövcud deyil" data-tr="Mevcut ürün yok" data-ru="Товары недоступны" data-uz="Mahsulot mavjud emas" data-ar="لا توجد منتجات متاحة" data-mn="Бүтээгдэхүүн байхгүй" data-tk="Haryat ýok" data-fr="Aucun produit disponible" data-de="Keine Produkte verfügbar">Məhsul mövcud deyil</p>
+                {% if query %}
+                    <p class="no-products" data-en="Product not found" data-az="Bu məhsul yoxdur">Bu məhsul yoxdur</p>
+                {% else %}
+                    <p class="no-products" data-en="No products available" data-az="Məhsul mövcud deyil" data-tr="Mevcut ürün yok" data-ru="Товары недоступны" data-uz="Mahsulot mavjud emas" data-ar="لا توجد منتجات متاحة" data-mn="Бүтээгдэхүүн байхгүй" data-tk="Haryat ýok" data-fr="Aucun produit disponible" data-de="Keine Produkte verfügbar">Məhsul mövcud deyil</p>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

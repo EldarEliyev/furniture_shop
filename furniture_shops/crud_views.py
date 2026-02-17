@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
 from.models import Furniture
 from.forms import FurnitureForm
 
@@ -6,8 +7,18 @@ def home(request):
     return render(request, "furniture_shops/home.html")
 
 def furniture_list(request):
-    furnitures = Furniture.objects.all().order_by('-created_at').filter(is_available=True)
-    return render(request,  "furniture_shops/furniture_list.html",  {"furnitures": furnitures})
+    """List view with optional keyword search (GET param `q`).
+    Searches name, category and description (case-insensitive).
+    """
+    query = request.GET.get('q', '').strip()
+    base_qs = Furniture.objects.filter(is_available=True).order_by('-created_at')
+    if query:
+        furnitures = base_qs.filter(
+            Q(name__icontains=query) | Q(category__icontains=query) | Q(description__icontains=query)
+        )
+    else:
+        furnitures = base_qs
+    return render(request,  "furniture_shops/furniture_list.html",  {"furnitures": furnitures, "query": query})
 
 def add_furniture(request):
     if request.method == "POST":

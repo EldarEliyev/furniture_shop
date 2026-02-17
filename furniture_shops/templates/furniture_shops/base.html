@@ -18,10 +18,12 @@
                     </div>
                 </a>
                 <div class="header-right">
-                    <div class="search-bar">
-                        <span class="search-icon">🔍</span>
-                        <input type="text" placeholder="Məhsul axtar" data-en-placeholder="Search for products" data-az-placeholder="Məhsul axtar" data-tr-placeholder="Ürün ara" data-ru-placeholder="Поиск товаров" data-uz-placeholder="Mahsulot qidirish" data-ar-placeholder="البحث عن المنتجات" data-mn-placeholder="Бүтээгдэхүүн хайх" data-tk-placeholder="Haryat gözlemek" data-fr-placeholder="Rechercher des produits" data-de-placeholder="Produkte suchen">
-                    </div>
+                    <form action="{% url 'furniture_list' %}" method="get" class="search-form">
+                        <div class="search-bar">
+                            <button type="submit" class="search-icon" aria-label="search">🔍</button>
+                            <input name="q" type="text" value="{{ request.GET.q|default:'' }}" placeholder="Məhsul axtar" data-en-placeholder="Search for products" data-az-placeholder="Məhsul axtar" data-tr-placeholder="Ürün ara" data-ru-placeholder="Поиск товаров" data-uz-placeholder="Mahsulot qidirish" data-ar-placeholder="البحث عن المنتجات" data-mn-placeholder="Бүтээгдэхүүн хайх" data-tk-placeholder="Haryat gözlemek" data-fr-placeholder="Rechercher des produits" data-de-placeholder="Produkte suchen">
+                        </div>
+                    </form>
                     <div class="language-dropdown">
                         <button class="lang-dropdown-btn" id="langDropdownBtn">
                             <span class="current-lang-icon" id="currentLangIcon">🇦🇿</span>
