@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Furniture Shop{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'furniture_shops/css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <a href="{% url 'home' %}" style="text-decoration: none; color: inherit;">
+                    <div class="logo">
+                        <h1>FURNITURE</h1>
+                        <span class="logo-subtitle" data-en="SHOP" data-az="MAĞAZA" data-tr="MAĞAZA" data-ru="МАГАЗИН" data-uz="DO'KON" data-ar="متجر" data-mn="ДЭЛГҮҮР" data-tk="DÜKAN" data-fr="MAGASIN" data-de="GESCHÄFT">MAĞAZA</span>
+                    </div>
+                </a>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Məhsul axtar" data-en-placeholder="Search for products" data-az-placeholder="Məhsul axtar" data-tr-placeholder="Ürün ara" data-ru-placeholder="Поиск товаров" data-uz-placeholder="Mahsulot qidirish" data-ar-placeholder="البحث عن المنتجات" data-mn-placeholder="Бүтээгдэхүүн хайх" data-tk-placeholder="Haryat gözlemek" data-fr-placeholder="Rechercher des produits" data-de-placeholder="Produkte suchen">
+                    </div>
+                    <div class="language-dropdown">
+                        <button class="lang-dropdown-btn" id="langDropdownBtn">
+                            <span class="current-lang-icon" id="currentLangIcon">🇦🇿</span>
+                            <span class="current-lang-text" id="currentLangText">AZ</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="lang-dropdown-menu" id="langDropdownMenu">
+                            <button class="lang-option" data-lang="az">
+                                <span class="lang-icon">🇦🇿</span>
+                                <span class="lang-name">Azərbaycan</span>
+                                <span class="lang-code">AZ</span>
+                            </button>
+                            <button class="lang-option" data-lang="en">
+                                <span class="lang-icon">🇬🇧</span>
+                                <span class="lang-name">English</span>
+                                <span class="lang-code">EN</span>
+                            </button>
+                            <button class="lang-option" data-lang="tr">
+                                <span class="lang-icon">🇹🇷</span>
+                                <span class="lang-name">Türkçe</span>
+                                <span class="lang-code">TR</span>
+                            </button>
+                            <button class="lang-option" data-lang="ru">
+                                <span class="lang-icon">🇷🇺</span>
+                                <span class="lang-name">Русский</span>
+                                <span class="lang-code">RU</span>
+                            </button>
+                            <button class="lang-option" data-lang="uz">
+                                <span class="lang-icon">🇺🇿</span>
+                                <span class="lang-name">O'zbek</span>
+                                <span class="lang-code">UZ</span>
+                            </button>
+                            <button class="lang-option" data-lang="ar">
+                                <span class="lang-icon">🇸🇦</span>
+                                <span class="lang-name">العربية</span>
+                                <span class="lang-code">AR</span>
+                            </button>
+                            <button class="lang-option" data-lang="mn">
+                                <span class="lang-icon">🇲🇳</span>
+                                <span class="lang-name">Монгол</span>
+                                <span class="lang-code">MN</span>
+                            </button>
+                            <button class="lang-option" data-lang="tk">
+                                <span class="lang-icon">🇹🇲</span>
+                                <span class="lang-name">Türkmen</span>
+                                <span class="lang-code">TK</span>
+                            </button>
+                            <button class="lang-option" data-lang="fr">
+                                <span class="lang-icon">🇫🇷</span>
+                                <span class="lang-name">Français</span>
+                                <span class="lang-code">FR</span>
+                            </button>
+                            <button class="lang-option" data-lang="de">
+                                <span class="lang-icon">🇩🇪</span>
+                                <span class="lang-name">Deutsch</span>
+                                <span class="lang-code">DE</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li>
+                        <a href="{% url 'furniture_list' %}" data-en="PRODUCTS" data-az="MƏHSULLAR" data-tr="ÜRÜNLER" data-ru="ТОВАРЫ" data-uz="MAHSULOTLAR" data-ar="المنتجات" data-mn="БҮТЭЭГДЭХҮҮН" data-tk="HARYATLAR" data-fr="PRODUITS" data-de="PRODUKTE">MƏHSULLAR</a>
+                        <span class="dropdown-arrow">▼</span>
+                    </li>
+                    <li>
+                        <a href="{% url 'add_furniture' %}" data-en="ADD PRODUCT" data-az="MƏHSUL ƏLAVƏ ET" data-tr="ÜRÜN EKLE" data-ru="ДОБАВИТЬ ТОВАР" data-uz="MAHSULOT QO'SHISH" data-ar="إضافة منتج" data-mn="БҮТЭЭГДЭХҮҮН НЭМЭХ" data-tk="HARYAT GOŞMAK" data-fr="AJOUTER PRODUIT" data-de="PRODUKT HINZUFÜGEN">MƏHSUL ƏLAVƏ ET</a>
+                        <span class="dropdown-arrow">▼</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{% static 'furniture_shops/js/language.js' %}"></script>
+</body>
+</html>

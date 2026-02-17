@@ -1,0 +1,43 @@
+{% extends 'furniture_shops/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="products-section">
+    <div class="container">
+        <h2 class="section-title" data-en="Our Products" data-az="Məhsullarımız" data-tr="Ürünlerimiz" data-ru="Наши товары" data-uz="Mahsulotlarimiz" data-ar="منتجاتنا" data-mn="Бидний бүтээгдэхүүн" data-tk="Haryatlarymyz" data-fr="Nos produits" data-de="Unsere Produkte">Məhsullarımız</h2>
+        <div class="products-grid">
+            {% for furniture in furnitures %}
+            <div class="product-card">
+                {% if furniture.image %}
+                <img src="{{ furniture.image.url }}" alt="{{ furniture.name }}" class="product-image">
+                {% else %}
+                <div class="product-image-placeholder">📦</div>
+                {% endif %}
+                <div class="product-info">
+                    <h3 class="product-name">{{ furniture.name }}</h3>
+                    <p class="product-category">{{ furniture.category }}</p>
+                    {% if furniture.discount and furniture.discount > 0 %}
+                        <p class="product-price"><span class="original-price">{{ furniture.price }} AZN</span> <span class="discounted-price">{{ furniture.discounted_price }} AZN</span></p>
+                    {% else %}
+                        <p class="product-price">{{ furniture.price }} AZN</p>
+                    {% endif %}
+                    <div class="product-actions">
+                        <a href="{% url 'furniture_detail' furniture.id %}" class="product-btn" data-en="View Details" data-az="Ətraflı Bax" data-tr="Detayları Gör" data-ru="Подробнее" data-uz="Batafsil ko'rish" data-ar="عرض التفاصيل" data-mn="Дэлгэрэнгүй харах" data-tk="Jikme-jik seret" data-fr="Voir les détails" data-de="Details anzeigen">
+                            Ətraflı Bax
+                        </a>
+                        <a href="{% url 'update_furniture' furniture.id %}" class="btn-primary" data-en="Edit" data-az="Redaktə Et" data-tr="Düzenle" data-ru="Редактировать" data-uz="Tahrirlash" data-ar="تعديل" data-mn="Засах" data-tk="Üýtgetmek" data-fr="Modifier" data-de="Bearbeiten">
+                            Redaktə Et
+                        </a>
+                        <a href="{% url 'delete_furniture' furniture.id %}" class="btn-danger" data-en="Delete" data-az="Sil" data-tr="Sil" data-ru="Удалить" data-uz="O'chirish" data-ar="حذف" data-mn="Устгах" data-tk="Pozmak" data-fr="Supprimer" data-de="Löschen">
+                            Sil
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="no-products" data-en="No products available" data-az="Məhsul mövcud deyil" data-tr="Mevcut ürün yok" data-ru="Товары недоступны" data-uz="Mahsulot mavjud emas" data-ar="لا توجد منتجات متاحة" data-mn="Бүтээгдэхүүн байхгүй" data-tk="Haryat ýok" data-fr="Aucun produit disponible" data-de="Keine Produkte verfügbar">Məhsul mövcud deyil</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

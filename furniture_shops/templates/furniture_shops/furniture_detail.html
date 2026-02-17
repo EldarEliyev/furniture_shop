@@ -1,0 +1,81 @@
+{% extends 'furniture_shops/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="detail-section">
+    <div class="container">
+        <div class="detail-container">
+            <div class="detail-grid">
+                <div class="detail-image">
+                    {% if furniture.image %}
+                    <img src="{{ furniture.image.url }}" alt="{{ furniture.name }}">
+                    {% else %}
+                    <div class="image-placeholder">📦</div>
+                    {% endif %}
+                </div>
+                <div class="detail-info">
+                    <h1 class="detail-name">{{ furniture.name }}</h1>
+                    <p class="detail-category">{{ furniture.category }}</p>
+                    {% if furniture.discount and furniture.discount > 0 %}
+                    <p class="detail-price"><span class="original-price">{{ furniture.price }} AZN</span> <span class="discounted-price">{{ furniture.discounted_price }} AZN</span> <span class="discount-badge">-{{ furniture.discount }}%</span></p>
+                    {% else %}
+                    <p class="detail-price">{{ furniture.price }} AZN</p>
+                    {% endif %}
+                    
+                    <div class="detail-specs">
+                        <div class="spec-item">
+                            <span class="spec-label" data-en="Material" data-az="Material" data-tr="Malzeme" data-ru="Материал" data-uz="Material" data-ar="المادة" data-mn="Материал" data-tk="Material" data-fr="Matériau" data-de="Material">Material:</span>
+                            <span class="spec-value">{{ furniture.material }}</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label" data-en="Color" data-az="Rəng" data-tr="Renk" data-ru="Цвет" data-uz="Rang" data-ar="اللون" data-mn="Өнгө" data-tk="Reňk" data-fr="Couleur" data-de="Farbe">Rəng:</span>
+                            <span class="spec-value">{{ furniture.color }}</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label" data-en="Dimensions" data-az="Ölçülər" data-tr="Boyutlar" data-ru="Размеры" data-uz="O'lchamlari" data-ar="الأبعاد" data-mn="Хэмжээс" data-tk="Ölçegleri" data-fr="Dimensions" data-de="Abmessungen">Ölçülər:</span>
+                            <span class="spec-value">{{ furniture.dimensions }}</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label" data-en="Weight" data-az="Çəki" data-tr="Ağırlık" data-ru="Вес" data-uz="Og'irligi" data-ar="الوزن" data-mn="Жин" data-tk="Agramy" data-fr="Poids" data-de="Gewicht">Çəki:</span>
+                            <span class="spec-value">{{ furniture.weight }} kg</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label" data-en="Stock" data-az="Stok" data-tr="Stok" data-ru="Склад" data-uz="Ombordagi" data-ar="المخزون" data-mn="Бараа" data-tk="Ambardaky" data-fr="Stock" data-de="Lager">Stok:</span>
+                            <span class="spec-value">{{ furniture.stock_count }}</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label" data-en="Status" data-az="Status" data-tr="Durum" data-ru="Статус" data-uz="Holati" data-ar="الحالة" data-mn="Төлөв" data-tk="Ýagdaýy" data-fr="Statut" data-de="Status">Status:</span>
+                            <span class="spec-value {% if furniture.is_available %}available{% else %}unavailable{% endif %}">
+                                {% if furniture.is_available %}
+                                <span data-en="Available" data-az="Mövcuddur" data-tr="Mevcut" data-ru="Доступно" data-uz="Mavjud" data-ar="متاح" data-mn="Байна" data-tk="Elýeterli" data-fr="Disponible" data-de="Verfügbar">Mövcuddur</span>
+                                {% else %}
+                                <span data-en="Not Available" data-az="Mövcud deyil" data-tr="Mevcut değil" data-ru="Недоступно" data-uz="Mavjud emas" data-ar="غير متاح" data-mn="Байхгүй" data-tk="Elýeterli däl" data-fr="Indisponible" data-de="Nicht verfügbar">Mövcud deyil</span>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    {% if furniture.description %}
+                    <div class="detail-description">
+                        <h3 data-en="Description" data-az="Təsvir" data-tr="Açıklama" data-ru="Описание" data-uz="Tavsifi" data-ar="الوصف" data-mn="Тайлбар" data-tk="Düşündiriş" data-fr="Description" data-de="Beschreibung">Təsvir</h3>
+                        <p>{{ furniture.description }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="detail-actions">
+                        <a href="{% url 'update_furniture' furniture.id %}" class="btn-primary" data-en="Edit" data-az="Redaktə Et" data-tr="Düzenle" data-ru="Редактировать" data-uz="Tahrirlash" data-ar="تعديل" data-mn="Засах" data-tk="Üýtgetmek" data-fr="Modifier" data-de="Bearbeiten">
+                            Redaktə Et
+                        </a>
+                        <a href="{% url 'delete_furniture' furniture.id %}" class="btn-danger" data-en="Delete" data-az="Sil" data-tr="Sil" data-ru="Удалить" data-uz="O'chirish" data-ar="حذف" data-mn="Устгах" data-tk="Pozmak" data-fr="Supprimer" data-de="Löschen">
+                            Sil
+                        </a>
+                        <a href="{% url 'furniture_list' %}" class="btn-secondary" data-en="Back to List" data-az="Siyahıya Qayıt" data-tr="Listeye Dön" data-ru="Вернуться к списку" data-uz="Ro'yxatga qaytish" data-ar="العودة إلى القائمة" data-mn="Жагсаалт руу буцах" data-tk="Sanawa dolanmak" data-fr="Retour à la liste" data-de="Zurück zur Liste">
+                            Siyahıya Qayıt
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'furniture_shops/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="form-section">
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-title" data-en="Update Furniture" data-az="Mebeli Yenilə" data-tr="Mobilyayı Güncelle" data-ru="Обновить мебель" data-uz="Mebelnni yangilash" data-ar="تحديث الأثاث" data-mn="Тавилга шинэчлэх" data-tk="Mebeli täzelemek" data-fr="Mettre à jour le meuble" data-de="Möbel aktualisieren">Mebeli Yenilə</h2>
+            <form method="POST" enctype="multipart/form-data" class="furniture-form">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label data-en="Name" data-az="Ad" data-tr="Ad" data-ru="Название" data-uz="Nomi" data-ar="الاسم" data-mn="Нэр" data-tk="Ady" data-fr="Nom" data-de="Name">Ad</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Category" data-az="Kateqoriya" data-tr="Kategori" data-ru="Категория" data-uz="Kategoriya" data-ar="الفئة" data-mn="Ангилал" data-tk="Kategoriýa" data-fr="Catégorie" data-de="Kategorie">Kateqoriya</label>
+                        {{ form.category }}
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Price" data-az="Qiymət" data-tr="Fiyat" data-ru="Цена" data-uz="Narxi" data-ar="السعر" data-mn="Үнэ" data-tk="Bahasy" data-fr="Prix" data-de="Preis">Qiymət</label>
+                        {{ form.price }}
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Discount (%)" data-az="Endirim (%)" data-tr="İndirim (%)" data-ru="Скидка (%)" data-uz="Chegirma (%)" data-ar="خصم (%)" data-mn="Хямдрал (%)" data-tk="Arzanladyş (%)" data-fr="Remise (%)" data-de="Rabatt (%)">Endirim (%)</label>
+                        {{ form.discount }}
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Material" data-az="Material" data-tr="Malzeme" data-ru="Материал" data-uz="Material" data-ar="المادة" data-mn="Материал" data-tk="Material" data-fr="Matériau" data-de="Material">Material</label>
+                        {{ form.material }}
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Color" data-az="Rəng" data-tr="Renk" data-ru="Цвет" data-uz="Rang" data-ar="اللون" data-mn="Өнгө" data-tk="Reňk" data-fr="Couleur" data-de="Farbe">Rəng</label>
+                        {{ form.color }}
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Dimensions" data-az="Ölçülər" data-tr="Boyutlar" data-ru="Размеры" data-uz="O'lchamlari" data-ar="الأبعاد" data-mn="Хэмжээс" data-tk="Ölçegleri" data-fr="Dimensions" data-de="Abmessungen">Ölçülər</label>
+                        {{ form.dimensions }}
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Weight" data-az="Çəki" data-tr="Ağırlık" data-ru="Вес" data-uz="Og'irligi" data-ar="الوزن" data-mn="Жин" data-tk="Agramy" data-fr="Poids" data-de="Gewicht">Çəki</label>
+                        {{ form.weight }}
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Stock Count" data-az="Stok Sayı" data-tr="Stok Sayısı" data-ru="Количество на складе" data-uz="Ombordagi soni" data-ar="عدد المخزون" data-mn="Барааны тоо" data-tk="Ambardaky sany" data-fr="Stock" data-de="Lagerbestand">Stok Sayı</label>
+                        {{ form.stock_count }}
+                    </div>
+                    <div class="form-group full-width">
+                        <label data-en="Description" data-az="Təsvir" data-tr="Açıklama" data-ru="Описание" data-uz="Tavsifi" data-ar="الوصف" data-mn="Тайлбар" data-tk="Düşündiriş" data-fr="Description" data-de="Beschreibung">Təsvir</label>
+                        {{ form.description }}
+                    </div>
+                    <div class="form-group full-width">
+                        <label data-en="Image" data-az="Şəkil" data-tr="Resim" data-ru="Изображение" data-uz="Rasm" data-ar="الصورة" data-mn="Зураг" data-tk="Surat" data-fr="Image" data-de="Bild">Şəkil</label>
+                        {{ form.image }}
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            {{ form.is_available }}
+                            <span data-en="Available" data-az="Mövcuddur" data-tr="Mevcut" data-ru="Доступно" data-uz="Mavjud" data-ar="متاح" data-mn="Байна" data-tk="Elýeterli" data-fr="Disponible" data-de="Verfügbar">Mövcuddur</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary" data-en="Update" data-az="Yenilə" data-tr="Güncelle" data-ru="Обновить" data-uz="Yangilash" data-ar="تحديث" data-mn="Шинэчлэх" data-tk="Täzelemek" data-fr="Mettre à jour" data-de="Aktualisieren">
+                        Yenilə
+                    </button>
+                    <a href="{% url 'furniture_detail' furniture.id %}" class="btn-secondary" data-en="Cancel" data-az="Ləğv Et" data-tr="İptal" data-ru="Отмена" data-uz="Bekor qilish" data-ar="إلغاء" data-mn="Цуцлах" data-tk="Ýatyrmak" data-fr="Annuler" data-de="Abbrechen">
+                        Ləğv Et
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

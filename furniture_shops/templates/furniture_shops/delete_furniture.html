@@ -1,0 +1,39 @@
+{% extends 'furniture_shops/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="delete-section">
+    <div class="container">
+        <div class="delete-container">
+            <div class="delete-warning">
+                <div class="warning-icon">⚠️</div>
+                <h2 class="delete-title" data-en="Delete Furniture" data-az="Mebeli Sil" data-tr="Mobilyayı Sil" data-ru="Удалить мебель" data-uz="Mebelnni o'chirish" data-ar="حذف الأثاث" data-mn="Тавилга устгах" data-tk="Mebeli pozmak" data-fr="Supprimer le meuble" data-de="Möbel löschen">Mebeli Sil</h2>
+                <p class="delete-message" data-en="Are you sure you want to delete this furniture?" data-az="Bu mebeli silmək istədiyinizə əminsiniz?" data-tr="Bu mobilyayı silmek istediğinize emin misiniz?" data-ru="Вы уверены, что хотите удалить эту мебель?" data-uz="Bu mebelnni o'chirishni xohlaysizmi?" data-ar="هل أنت متأكد أنك تريد حذف هذا الأثاث؟" data-mn="Та энэ тавилгыг устгахдаа итгэлтэй байна уу?" data-tk="Bu mebeli pozmak isleýändigiňize ynanýarsyňyzmy?" data-fr="Êtes-vous sûr de vouloir supprimer ce meuble ?" data-de="Sind Sie sicher, dass Sie dieses Möbel löschen möchten?">
+                    Bu mebeli silmək istədiyinizə əminsiniz?
+                </p>
+            </div>
+            
+            <div class="delete-info">
+                <h3>{{ furniture.name }}</h3>
+                <p><strong data-en="Category" data-az="Kateqoriya" data-tr="Kategori" data-ru="Категория" data-uz="Kategoriya" data-ar="الفئة" data-mn="Ангилал" data-tk="Kategoriýa" data-fr="Catégorie" data-de="Kategorie">Kateqoriya:</strong> {{ furniture.category }}</p>
+                <p><strong data-en="Price" data-az="Qiymət" data-tr="Fiyat" data-ru="Цена" data-uz="Narxi" data-ar="السعر" data-mn="Үнэ" data-tk="Bahasy" data-fr="Prix" data-de="Preis">Qiymət:</strong> {{ furniture.price }} AZN</p>
+                {% if furniture.image %}
+                <img src="{{ furniture.image.url }}" alt="{{ furniture.name }}" class="delete-image">
+                {% endif %}
+            </div>
+            
+            <form method="POST" class="delete-form">
+                {% csrf_token %}
+                <div class="delete-actions">
+                    <button type="submit" class="btn-danger" data-en="Yes, Delete" data-az="Bəli, Sil" data-tr="Evet, Sil" data-ru="Да, удалить" data-uz="Ha, o'chirish" data-ar="نعم، احذف" data-mn="Тийм, устгах" data-tk="Hawa, pozmak" data-fr="Oui, supprimer" data-de="Ja, löschen">
+                        Bəli, Sil
+                    </button>
+                    <a href="{% url 'furniture_detail' furniture.id %}" class="btn-secondary" data-en="Cancel" data-az="Ləğv Et" data-tr="İptal" data-ru="Отмена" data-uz="Bekor qilish" data-ar="إلغاء" data-mn="Цуцлах" data-tk="Ýatyrmak" data-fr="Annuler" data-de="Abbrechen">
+                        Ləğv Et
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

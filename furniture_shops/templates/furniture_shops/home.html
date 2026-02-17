@@ -1,0 +1,42 @@
+{% extends 'furniture_shops/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="hero-image">
+        <div class="hero-overlay">
+            <h2 class="hero-title" data-en="Welcome to Furniture Shop" data-az="Furniture Mağazasına Xoş Gəlmisiniz" data-tr="Mobilya Mağazasına Hoş Geldiniz" data-ru="Добро пожаловать в магазин мебели" data-uz="Mebel do'koniga xush kelibsiz" data-ar="مرحباً بك في متجر الأثاث" data-mn="Тавилгын дэлгүүрт тавтай морил" data-tk="Mebel dükanyna hoş geldiňiz" data-fr="Bienvenue dans le magasin de meubles" data-de="Willkommen im Möbelgeschäft">
+                Furniture Mağazasına Xoş Gəlmisiniz
+            </h2>
+            <p class="hero-subtitle" data-en="Discover elegant furniture for your home" data-az="Ev üçün zərif mebellər kəşf edin" data-tr="Eviniz için zarif mobilyalar keşfedin" data-ru="Откройте для себя элегантную мебель для вашего дома" data-uz="Uyingiz uchun zamonaviy mebellarni kashf qiling" data-ar="اكتشف أثاثًا أنيقًا لمنزلك" data-mn="Гэрийнхээ зориулсан гоёлсон тавилгыг олж мэдээрэй" data-tk="Öýüňiz üçin owadan mebelleri tapyň" data-fr="Découvrez des meubles élégants pour votre maison" data-de="Entdecken Sie elegante Möbel für Ihr Zuhause">
+                Ev üçün zərif mebellər kəşf edin
+            </p>
+            <a href="{% url 'furniture_list' %}" class="cta-button" data-en="View Products" data-az="Məhsullara Bax" data-tr="Ürünleri Görüntüle" data-ru="Посмотреть товары" data-uz="Mahsulotlarni ko'rish" data-ar="عرض المنتجات" data-mn="Бүтээгдэхүүн харах" data-tk="Haryatlara seret" data-fr="Voir les produits" data-de="Produkte anzeigen">
+                Məhsullara Bax
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3 data-en="Premium Quality" data-az="Premium Keyfiyyət" data-tr="Premium Kalite" data-ru="Премиум качество" data-uz="Premium sifat" data-ar="جودة ممتازة" data-mn="Дээд зэргийн чанар" data-tk="Premium hilli" data-fr="Qualité premium" data-de="Premium-Qualität">Premium Keyfiyyət</h3>
+                <p data-en="High-quality materials and craftsmanship" data-az="Yüksək keyfiyyətli materiallar və işçilik" data-tr="Yüksek kaliteli malzemeler ve işçilik" data-ru="Высококачественные материалы и мастерство" data-uz="Yuqori sifatli materiallar va ishlab chiqarish" data-ar="مواد عالية الجودة والحرفية" data-mn="Дээд зэргийн материал, чанартай ажил" data-tk="Ýokary hilli materiallar we işçilik" data-fr="Matériaux de haute qualité et savoir-faire" data-de="Hochwertige Materialien und Handwerkskunst">Yüksək keyfiyyətli materiallar və işçilik</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3 data-en="Free Delivery" data-az="Pulsuz Çatdırılma" data-tr="Ücretsiz Teslimat" data-ru="Бесплатная доставка" data-uz="Bepul yetkazib berish" data-ar="توصيل مجاني" data-mn="Үнэгүй хүргэлт" data-tk="Mugt eltýänlik" data-fr="Livraison gratuite" data-de="Kostenloser Versand">Pulsuz Çatdırılma</h3>
+                <p data-en="Free delivery on orders over 500 AZN" data-az="500 AZN-dən yuxarı sifarişlərdə pulsuz çatdırılma" data-tr="500 AZN üzeri siparişlerde ücretsiz teslimat" data-ru="Бесплатная доставка при заказе свыше 500 AZN" data-uz="500 AZN dan yuqori buyurtmalarda bepul yetkazib berish" data-ar="توصيل مجاني للطلبات التي تزيد عن 500 أزن" data-mn="500 AZN-аас дээш захиалгад үнэгүй хүргэлт" data-tk="500 AZN-dan ýokary sargytlarda mugt eltýänlik" data-fr="Livraison gratuite pour les commandes de plus de 500 AZN" data-de="Kostenloser Versand bei Bestellungen über 500 AZN">500 AZN-dən yuxarı sifarişlərdə pulsuz çatdırılma</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3 data-en="Warranty" data-az="Zəmanət" data-tr="Garanti" data-ru="Гарантия" data-uz="Kafolat" data-ar="ضمان" data-mn="Баталгаа" data-tk="Kepillik" data-fr="Garantie" data-de="Garantie">Zəmanət</h3>
+                <p data-en="2 years warranty on all products" data-az="Bütün məhsullarda 2 il zəmanət" data-tr="Tüm ürünlerde 2 yıl garanti" data-ru="2 года гарантии на все товары" data-uz="Barcha mahsulotlarda 2 yil kafolat" data-ar="ضمان لمدة عامين على جميع المنتجات" data-mn="Бүх бүтээгдэхүүнд 2 жилийн баталгаа" data-tk="Hemme haryatlarda 2 ýyl kepillik" data-fr="2 ans de garantie sur tous les produits" data-de="2 Jahre Garantie auf alle Produkte">Bütün məhsullarda 2 il zəmanət</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
